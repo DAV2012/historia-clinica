@@ -1,0 +1,7 @@
+.MuiStack-root{
+    overflow: hidden!important;
+    width: 100%;
+}
+.MuiFormControl-root.MuiTextField-root{
+    width: 100%;
+}
