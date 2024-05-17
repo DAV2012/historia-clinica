@@ -17,8 +17,9 @@ services:
   #     - default
 
   react_app:
-    build: ./React_app
+    # build: ./React_app
     container_name: react_app
+    image: dav046/react_app:1.0.0
     ports:
       - "3000:3000"
     volumes:
@@ -31,8 +32,8 @@ services:
 
   java_app:
     container_name: java_app
-    image: pee-java_app:1.0.0
-    build: ./
+    image: dav046/java_app:1.0.0
+    # build: ./
     ports:
       - "8080:8080"
     environment:
@@ -59,45 +60,45 @@ services:
     networks:
       app_network:
 
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      # These ports are in format <host-port>:<container-port>
-      - '80:80' # Public HTTP Port
-      - '443:443' # Public HTTPS Port
-      - '81:81' # Admin Web Port
-      # Add any other Stream port you want to expose
-      - '21:21' # FTP
+  # app:
+  #   image: 'jc21/nginx-proxy-manager:latest'
+  #   restart: unless-stopped
+  #   ports:
+  #     # These ports are in format <host-port>:<container-port>
+  #     - '80:80' # Public HTTP Port
+  #     - '443:443' # Public HTTPS Port
+  #     - '81:81' # Admin Web Port
+  #     # Add any other Stream port you want to expose
+  #     - '21:21' # FTP
       
-    environment:
-      # Mysql/Maria connection parameters:
-      DB_MYSQL_HOST: "db"
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: "npm"
-      DB_MYSQL_PASSWORD: "npm"
-      DB_MYSQL_NAME: "npm"
-      # Uncomment this if IPv6 is not enabled on your host
-      DISABLE_IPV6: 'true'
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
-    depends_on:
-      - db
-    networks:
-      - app_network
-  db:
-    image: 'jc21/mariadb-aria:latest'
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: 'npm'
-      MYSQL_DATABASE: 'npm'
-      MYSQL_USER: 'npm'
-      MYSQL_PASSWORD: 'npm'
-    volumes:
-      - ./mysql:/var/lib/mysql
-    networks:
-      - app_network
+  #   environment:
+  #     # Mysql/Maria connection parameters:
+  #     DB_MYSQL_HOST: "db"
+  #     DB_MYSQL_PORT: 3306
+  #     DB_MYSQL_USER: "npm"
+  #     DB_MYSQL_PASSWORD: "npm"
+  #     DB_MYSQL_NAME: "npm"
+  #     # Uncomment this if IPv6 is not enabled on your host
+  #     DISABLE_IPV6: 'true'
+  #   volumes:
+  #     - ./data:/data
+  #     - ./letsencrypt:/etc/letsencrypt
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - app_network
+  # db:
+  #   image: 'jc21/mariadb-aria:latest'
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: 'npm'
+  #     MYSQL_DATABASE: 'npm'
+  #     MYSQL_USER: 'npm'
+  #     MYSQL_PASSWORD: 'npm'
+  #   volumes:
+  #     - ./mysql:/var/lib/mysql
+  #   networks:
+  #     - app_network
 
     
 volumes:
