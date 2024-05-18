@@ -19,7 +19,7 @@ services:
     container_name: java_db
     image: mysql:8-oracle
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=1413
       - MYSQL_DATABASE=dbcivera
@@ -45,19 +45,19 @@ services:
     networks:
       app_network:
 
-  react_app:
-    # build: ./React_app
-    container_name: react_app
-    image: dav046/react_app:1.0.0
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - java_db
-      - java_app
-    networks:
-      - app_network
+  # react_app:
+  #   # build: ./React_app
+  #   container_name: react_app
+  #   image: dav046/react_app:1.0.0
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     - java_db
+  #     - java_app
+  #   networks:
+  #     - app_network
 
 
   # app:
