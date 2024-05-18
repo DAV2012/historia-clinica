@@ -34,7 +34,7 @@ public class ApiApplication {
 		@Override
 		public void addCorsMappings(CorsRegistry registry) {
 			registry.addMapping("/**")
-					.allowedOrigins("http://192.168.1.6:3000","https://dav245.duckdns.org","http://localhost:3000,http://8.219.185.139:3000/")
+					.allowedOrigins("http://192.168.1.6:3000","https://dav245.duckdns.org","http://localhost:3000,http://8.219.185.139:3000")
 					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 		}
 }
