@@ -15,6 +15,35 @@ services:
   #   networks:
   #     - app_network
   #     - default
+  java_db:
+    container_name: java_db
+    image: mysql:8-oracle
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1413
+      - MYSQL_DATABASE=dbcivera
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      app_network:
+
+  java_app:
+    container_name: java_app
+    # image: dav046/java_app:1.0.0
+    build: ./
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=jdbc:mysql://java_db:3306/dbcivera
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=1413
+      - API_SECRET=root
+    depends_on:
+      - java_db
+    networks:
+      app_network:
 
   react_app:
     # build: ./React_app
@@ -30,35 +59,6 @@ services:
     networks:
       - app_network
 
-  java_app:
-    container_name: java_app
-    image: dav046/java_app:1.0.0
-    # build: ./
-    ports:
-      - "8080:8080"
-    environment:
-      - DATABASE_URL=jdbc:mysql://java_db:3306/dbcivera
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=1413
-      - API_SECRET=root
-    depends_on:
-      - java_db
-    networks:
-      app_network:
-
-  java_db:
-    container_name: java_db
-    image: mysql:8-oracle
-    ports:
-      - "3307:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=1413
-      - MYSQL_DATABASE=dbcivera
-    volumes:
-      - mysql-data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      app_network:
 
   # app:
   #   image: 'jc21/nginx-proxy-manager:latest'

@@ -256,6 +256,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO `usuarios` (`login`, `clave`) VALUES ('root', '$2a$10$UHMiic0prcBCU9r7s4T9m.kfl.LH6fXyu47ZToPuICgCkRkUiWIqG');
 --
 -- Dumping events for database 'dbcivera'
 --
