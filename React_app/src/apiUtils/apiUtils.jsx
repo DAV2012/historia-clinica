@@ -4,7 +4,7 @@
 
 const getHeaders = () => {
   const jwtToken = sessionStorage.getItem('jwtToken'); // Obtener el token desde donde corresponda
-  //const jwtToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb290IiwiaXNzIjoiY2l2ZXJhIiwiaWQiOjIsImV4cCI6MTY5OTUwNDkxM30.dqrBueQ8hgFva-AHL7dVerJKJd_86TOB9Lh42ZMU_dY"; // Obtener el token desde donde corresponda
+  //const jwtToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb290IiwiaXNzIjoiY2l2ZXJhIiwiaWQiOjMsImV4cCI6MTcxNjQ2NTMwM30.-LV4cCXXAIpAlmSNYkLKXP9x6gSBNSsBFjfczxQdWn0"; // Obtener el token desde donde corresponda
   
   return {
     "Content-Type": "application/json",

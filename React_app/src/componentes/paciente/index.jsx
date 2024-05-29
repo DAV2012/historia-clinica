@@ -5,6 +5,7 @@ import {
   Box,
   CircularProgress,
   IconButton,
+  ListItem,
   ListItemText,
   Paper,
   Tooltip,
@@ -26,7 +27,9 @@ import { PDFDownloadLink, usePDF } from "@react-pdf/renderer";
 import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import MyFactura from "../PDF/facturas";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-
+import CancelIcon from '@mui/icons-material/Cancel';
+import ReceiptIcon from "@mui/icons-material/Receipt";
+import PrintIcon from '@mui/icons-material/Print';
 
 
 
@@ -155,54 +158,54 @@ export default function Paciente() {
 
   useEffect(() => {
     setOpenBackdrop(true);
-      Promise.all([
-        getPagosByFactura(itemselectPagoPorFactura),
-        getFactura(itemselectPagoPorFactura),
-        getHistoriaClinicaIdPaciente(itemSelectIdPaciente),
-        getFacturaIdPaciente(itemSelectIdPaciente),
-        getAgendaIdPaciente(itemSelectIdPaciente),
-      ])
-        .then(([respuestaPagosByFactura, respuestaFacturaId,respuestaHistoria, respuestaFactura, respuestaAgenda]) => {
-            
-            if (respuestaPagosByFactura && respuestaPagosByFactura.content) {
-              let totalPagos = respuestaPagosByFactura.content.reduce((total, pago) => total + pago.valor_pago_double, 0);
-              setTotalSum(totalPagos)
-            }
+    Promise.all([
+      getPagosByFactura(itemselectPagoPorFactura),
+      getFactura(itemselectPagoPorFactura),
+      getHistoriaClinicaIdPaciente(itemSelectIdPaciente),
+      getFacturaIdPaciente(itemSelectIdPaciente),
+      getAgendaIdPaciente(itemSelectIdPaciente),
+    ])
+      .then(([respuestaPagosByFactura, respuestaFacturaId, respuestaHistoria, respuestaFactura, respuestaAgenda]) => {
 
-            let dataPaciente = {
-              historia_clinica: respuestaHistoria.content,
-              factura: respuestaFactura.content,
-              agenda: respuestaAgenda.content,
-            };
-            
-            const dataFactura = {
-              ...respuestaFacturaId,
-              pago: respuestaPagosByFactura.content,
-            };
+        if (respuestaPagosByFactura && respuestaPagosByFactura.content) {
+          let totalPagos = respuestaPagosByFactura.content.reduce((total, pago) => total + pago.valor_pago_double, 0);
+          setTotalSum(totalPagos)
+        }
 
-            return {dataFactura, dataPaciente};
-          
-        })
-        .then(({dataFactura, dataPaciente}) => {
-          if (dataFactura) setDataPagos(dataFactura); // Update the state here 
-          if(dataPaciente) setDataPaciente(dataPaciente);
-        })
-        .catch((error) => {
-          console.error("Error en la cadena de promesas:", error);
+        let dataPaciente = {
+          historia_clinica: respuestaHistoria.content,
+          factura: respuestaFactura.content,
+          agenda: respuestaAgenda.content,
+        };
+
+        const dataFactura = {
+          ...respuestaFacturaId,
+          pago: respuestaPagosByFactura.content,
+        };
+
+        return { dataFactura, dataPaciente };
+
+      })
+      .then(({ dataFactura, dataPaciente }) => {
+        if (dataFactura) setDataPagos(dataFactura); // Update the state here 
+        if (dataPaciente) setDataPaciente(dataPaciente);
+      })
+      .catch((error) => {
+        console.error("Error en la cadena de promesas:", error);
+        setOpenBackdrop(false);
+        setDataPaciente({})
+        setDataPaciente({})
+      })
+      .finally(() => {
+        sleep(500).then(() => {
+          setOpen(true);
           setOpenBackdrop(false);
-          setDataPaciente({})
-          setDataPaciente({})
-        })
-        .finally(() => {
-          sleep(500).then(() => {
-            setOpen(true);
-            setOpenBackdrop(false);
 
-          });
-        })
+        });
+      })
 
-    
-  }, [itemSelectIdPaciente,itemselectPagoPorFactura, stateModal, actualizar]);
+
+  }, [itemSelectIdPaciente, itemselectPagoPorFactura, stateModal, actualizar]);
 
   const handleItem = (e) => {
     const row = e.currentTarget.id;
@@ -228,6 +231,10 @@ export default function Paciente() {
     setExpanded(!expanded);
   };
 
+  const handleVistCardFactura = () => {
+    setItemselectPagoPorFactura(null)
+  };
+
 
 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -246,7 +253,7 @@ export default function Paciente() {
       <Box
         id="containerMain"
         margin={isMobile ? "0 0 0 3rem" : "3rem"}
-        padding={isMobile ? "1rem 1rem 8rem 1rem" : "3rem"}
+        padding={isMobile ? "1rem 1rem 8rem 1rem" : "0"}
         display={"flex"}
         flexDirection={isMobile ? "column" : "row"}
         gap={"2rem"}
@@ -272,11 +279,11 @@ export default function Paciente() {
           />
         </Box>
         {dataPaciente["historia_clinica"] && dataPaciente["factura"] && dataPaciente["agenda"] && (dataPaciente["historia_clinica"].length > 0 || dataPaciente["factura"].length > 0 || dataPaciente["agenda"].length > 0 || dataPaciente["agenda"].length > 0) && open && (
-          <Grid2 
-            xs={12} 
+          <Grid2
+            xs={12}
             container
             spacing={{ xs: 1, sm: 2, md: 3 }}
-            
+
             id={"containerInfo"}
             alignContent={"center"}
             alignItems={"center"}
@@ -290,27 +297,28 @@ export default function Paciente() {
                 .map((dataHistoriaaclinica, index) => {
 
                   return (
-                    <Grid2 xs={12} md={!expanded && 4}   key={index}>
+                    <Grid2 xs={12} md={!expanded && 4} key={index}>
                       <Cards
-                 
-                      listDataBD={dataHistoriaaclinica}
-                      objetoCard={objetoCard}
-                      setExpanded={setExpanded}
-                      expanded={expanded}
-                      handleCrear={handleCrear}
-                      handleExpandClick={handleExpandClick}
-                      servicesObjet={servicesObjet}
-                      handleEdit={handleEdit}
-                      dataPDF={dataPaciente}
-                    />
+
+                        listDataBD={dataHistoriaaclinica}
+                        objetoCard={objetoCard}
+                        setExpanded={setExpanded}
+                        expanded={expanded}
+                        handleCrear={handleCrear}
+                        handleExpandClick={handleExpandClick}
+                        servicesObjet={servicesObjet}
+                        handleEdit={handleEdit}
+                        dataPDF={dataPaciente}
+                      />
                     </Grid2>
                   );
                 })}
 
 
-            {dataPaciente["agenda"] && dataPaciente["historia_clinica"] && !expanded && <Grid2 xs={12} md={8} display={"flex"} flexDirection={"column"} gap={"2rem"}  width={"100%"} height={"500px"}>
 
-              {dataPaciente["agenda"] && dataPaciente["agenda"].length > 0 && !expanded && (<Box component={Paper} width={"100%" } id="agenda">
+            {dataPaciente["agenda"] && dataPaciente["historia_clinica"] && !expanded && <Grid2 xs={12} md={8} display={"flex"} flexDirection={"column"} gap={"2rem"} width={"100%"}>
+
+              {dataPaciente["agenda"] && dataPaciente["agenda"].length > 0 && !expanded && (<Box component={Paper} width={"100%"} id="agenda">
 
                 <CardDate
                   listDataBD={dataPaciente["agenda"]}
@@ -323,21 +331,118 @@ export default function Paciente() {
               </Box>
               )}
 
+
+              {!itemselectPagoPorFactura && dataPaciente["factura"] && dataPaciente["factura"].length > 0 && !expanded && (
+                <Box component={Paper} xs={12} md={8} id="factura">
+
+                  <BasicTable
+                    listDataBD={dataPaciente["factura"]}
+                    objetoTabla={objetoTablaFactura}
+                    handleItem={handleItemFactura}
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                    page={page}
+                    rowsPerPage={rowsPerPage}
+                    count={countDataPaciente}
+                    setPage={setPage}
+                    handlePagos={handleopenModalPAgoFactura}
+                    servicesEditar="editarFactura"
+                    servicesDelete="deleteFactura"
+                  />
+
+                </Box>
+              )}
+
               {itemselectPagoPorFactura && dataPaciente["historia_clinica"] && !expanded && <Box
-                sx={{ overflowY: "visible",overflowX:"auto", height: "-webkit-fill-available", paddingBottom: "1rem" }}
+                sx={{ overflowY: "visible", paddingBottom: "1rem" }}
                 component={Paper}
                 width={"100%"}
                 display="flex"
                 position="relative" // Agrega esta propiedad
 
               >
-                {dataPagos && dataPagos.pago && <Box
-                  sx={{ height: isMobile ? "inherit" : "100%", padding: isMobile ? "1rem" : "1rem 2rem", width: "100%" }} 
+                <IconButton
+                  sx={{
+                    padding: 0,
+                    position: "absolute",
+                    top: "0.5rem",
+                    right: "0.5rem",
+                  }}
+                  onClick={handleVistCardFactura}
                 >
+                  <Tooltip disableFocusListener title="Cerrar factura" arrow>
+                    <CancelIcon></CancelIcon>
+                  </Tooltip>
+                </IconButton>
 
-                  <Typography variant="h2" padding={"1rem 0"} fontSize={"18px"}>
-                    {dataPagos.codigofactura || ""}  {<Typography>Seguimiento a esta factura</Typography>}
-                  </Typography>
+                {dataPagos && dataPagos.pago && <Box
+                  sx={{
+                    height: isMobile ? "inherit" : "100%",
+                    padding: isMobile ? "1rem" : "1rem 2rem",
+                    width: "100%"
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "fit-content",
+
+
+
+                    }}
+                  >
+                    <Typography variant="h2" padding={"1rem 0"} fontSize={"18px"}>
+                      {dataPagos.codigofactura || ""}  {<Typography>Seguimiento a esta factura</Typography>}
+                    </Typography>
+
+                    <ListItem
+                      alignItems="center"
+                      disablePadding
+                      sx={{
+                        justifyContent: "space-between"
+                      }}
+
+
+                    >
+                      <IconButton
+                        id={itemselectPagoPorFactura}
+                        data-services="pagosFactura"
+                        sx={{
+                          padding: 0
+                        }}
+
+
+                        onClick={handleopenModalPAgoFactura}
+                      >
+                        <ReceiptIcon />
+                      </IconButton>
+                      <IconButton
+                        sx={{
+                          padding: 0
+                        }}
+
+                      >
+                        {dataPagos && dataPaciente && dataPagos.pago && dataPaciente.historia_clinica.length > 0 && <PDFDownloadLink document={<MyFactura data={dataPagos} dataPersonal={dataPaciente.historia_clinica[0]} totalSum={totalSum} />} fileName="informe.pdf">
+                          {({ blob, url, loading, error }) => (
+
+
+                            error && <Box>Something went wrong: {error}</Box>,
+                            !error && loading ? <Box fontSize={"0.5rem"}>Cargando ...</Box> : <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Tooltip disableFocusListener title="Imprimir factura" arrow>
+                                <PrintIcon ></PrintIcon>
+                              </Tooltip>
+                            </a>
+
+                          )}
+                        </PDFDownloadLink>}
+                      </IconButton>
+                    </ListItem>
+                  </Box>
 
 
                   {dataPagos && dataPagos.pago && dataPagos.pago.map(({ codigo_pago_text, fechadate, observacionespago, valor_pago_double }, index) => {
@@ -364,7 +469,7 @@ export default function Paciente() {
                       </Box>
                     </Box>
                   })}
-                  <Box display={"flex"} alignItems={"center"} >
+                  <Box display={"flex"} alignItems={"center"} position={"relative"}>
                     <Typography variant="h2" flexGrow={1} fontSize={"8px"} >
 
                     </Typography>
@@ -385,58 +490,15 @@ export default function Paciente() {
                         />
                       </Typography>
                     </Box>
+
                   </Box>
                 </Box>}
-                <IconButton
-                  sx={{
-                    position: "absolute",
-                    top: "1rem",
-                    right: "1rem",
-                  }}
-                >
-                  {dataPagos && dataPaciente && dataPagos.pago && dataPaciente.historia_clinica.length > 0 && <PDFDownloadLink document={<MyFactura data={dataPagos } dataPersonal={dataPaciente.historia_clinica[0]} totalSum={totalSum}/>} fileName="informe.pdf">
-                    {({ blob, url, loading, error }) => (
-                     
-                      
-                      error && <Box>Something went wrong: {error}</Box>,
-                      !error && loading ? <Box fontSize={"0.5rem"}>Cargando ...</Box>:<a
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Tooltip disableFocusListener title="Editar historia clínica" arrow>
-                          <LocalPrintshopIcon ></LocalPrintshopIcon>
-                        </Tooltip>
-                      </a>
-                      
-                    )}
-                  </PDFDownloadLink>}
-                </IconButton>
+
               </Box>}
 
             </Grid2>}
 
 
-            {dataPaciente["factura"] && dataPaciente["factura"].length > 0 && !expanded && (
-              <Grid2  component={Paper} xs={12} id="factura">
-
-                <BasicTable
-                  listDataBD={dataPaciente["factura"]}
-                  objetoTabla={objetoTablaFactura}
-                  handleItem={handleItemFactura}
-                  handleEdit={handleEdit}
-                  handleDelete={handleDelete}
-                  page={page}
-                  rowsPerPage={rowsPerPage}
-                  count={countDataPaciente}
-                  setPage={setPage}
-                  handlePagos={handleopenModalPAgoFactura}
-                  servicesEditar="editarFactura"
-                  servicesDelete="deleteFactura"
-                />
-
-              </Grid2>
-            )}
           </Grid2>
         )}
       </Box>

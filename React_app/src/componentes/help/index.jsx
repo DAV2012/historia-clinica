@@ -20,6 +20,7 @@ const historiaClinica = {
       value: "tipodocumento_text",
       inicialvalue: "",
       option: ["CC", "TI", "CE", "PSP"],
+      disabled:true,
     },
     nombre_text: {
       label: "Nombre Completo",
@@ -27,6 +28,7 @@ const historiaClinica = {
       typefieldInput: "text",
       value: "nombre_text",
       inicialvalue: "",
+      disabled:true,
 
     },
     telefono_double: {
@@ -35,6 +37,7 @@ const historiaClinica = {
       typefieldInput: "telefono",
       value: "telefono_double",
       inicialvalue: "",
+      disabled: true,
 
     },
     correo_email: {
@@ -43,6 +46,7 @@ const historiaClinica = {
       typefieldInput: "email",
       value: "correo_email",
       inicialvalue: "",
+      disabled:true,
 
     },
     procedimiento: {

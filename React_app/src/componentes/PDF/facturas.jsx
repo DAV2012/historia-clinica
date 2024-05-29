@@ -195,7 +195,7 @@ export default function MyFactura({ data, dataPersonal,totalSum }) {
         <Page size="A4" style={styles.page} wrap>
             <View style={styles.sectionHeather} fixed>
                 <View style={styles.sectionLogo}>
-                    <Image style={styles.logo} src="/img/logo.png" />
+                    <Image style={styles.logo} src="/img/logo512.png" />
                 </View>
                 <View style={styles.sectionTitulo}>
                     <View style={styles.TituloPrincipal}>

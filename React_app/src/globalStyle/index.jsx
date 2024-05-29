@@ -29,7 +29,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+line-height: 1;
   font-family: 'Poppins', sans-serif;
   transition:all 0.3s;
   max-width:100vw;

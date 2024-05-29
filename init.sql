@@ -275,3 +275,4 @@ INSERT INTO `usuarios` (`login`, `clave`) VALUES ('root', '$2a$10$UHMiic0prcBCU9
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-11-08 13:24:04
+

@@ -67,7 +67,7 @@ export default function Cards({
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <Card
-      sx={{width:"100%", height:expanded?"100%":"500px"}}
+      sx={{width:"100%"}}
     >
       <CardHeader
         avatar={
@@ -229,7 +229,7 @@ export default function Cards({
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
-      <Collapse
+      {expanded  && <Collapse
         in={expanded}
         timeout={"auto"}
         orientation={isMobile ? "vertical" : "horizontal"}
@@ -238,7 +238,7 @@ export default function Cards({
           justifyContent: "center",
           "& .MuiCollapse-wrapperInner":{width:"100%"}, 
           "& .MuiCollapse-wrapper":{width:"100%"},
-          height:expanded&&"418px",
+
        
         }}
 
@@ -247,7 +247,7 @@ export default function Cards({
           listDataBD={listDataBD}
           objetoTabs={servicesObjet.historiaClinica}
         />
-      </Collapse>
+      </Collapse>}
     </Card>
 
   );

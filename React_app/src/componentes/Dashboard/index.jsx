@@ -136,7 +136,7 @@ export default function Dashboard() {
          
         },0);
 
-        setDataGraficaPieFacturaVsGastos({ data: [sumaTotalFactura, sumaTotalFactura00], label: [ "Facturas","Gastos CIVERA",] });
+        setDataGraficaPieFacturaVsGastos({ data: [sumaTotalFactura, sumaTotalFactura00], label: [ "Facturas","Gastos",] });
 
         ///Grafica de abonos Vs deudas
         const newDataGrafiLineFactura = respuestaFacturaTotal.content.reduce((data, { codigofactura, total_factura, documentodouble }) => {
