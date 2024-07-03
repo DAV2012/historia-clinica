@@ -1,41 +1,71 @@
-<p align="center">
-  <img src="./docs/logo.png" alt="Logo de la Aplicación" width="200" />
-</p>
+<div align="center">
+  <h1 align="center">
+    Control y Agendamiento de Pacientes
+    <br />
+    <br />
+    <p align="center">
+      <img src="https://img.shields.io/badge/Frontend-Next.js-blue" alt="Tecnología Frontend: Next.js">
+      <img src="https://img.shields.io/badge/Backend-Spring%20Boot-green" alt="Tecnología Backend: Spring Boot">
+      <img src="https://img.shields.io/badge/Database-MySQL-orange" alt="Base de Datos: MySQL">
+      <img src="https://img.shields.io/badge/Deployment-Docker%20%7C%20AWS-yellow" alt="Despliegue: Docker | AWS">
+    </p>
+    <p>
+      <a href="https://docusaurus.io">
+        <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/hero.png" alt="Control y Agendamiento de Pacientes">
+      </a>
+    </p>
+  </h1>
+</div>
 
-<h1 align="center">Control y Agendamiento de Pacientes</h1>
+## 🏥 Descripción
 
-<p align="center">
-  <b>Una aplicación completa para gestionar citas, historias clínicas y pagos de pacientes.</b>
-</p>
-
----
-
-## 🚀 Características Destacadas
-
-- **Autenticación Segura**: Sistema de login con Spring Boot y JWT.
-- **Dashboard Interactivo**: Visualización de datos con gráficas dinámicas.
-- **Gestión de Citas**: Agendamiento eficiente y seguimiento de citas médicas.
-- **Historias Clínicas Digitales**: Registro detallado y seguro de la historia médica de los pacientes.
-- **Facturación y Pagos**: Generación y gestión de facturas, control de pagos y cobros.
-
----
-
-## 📸 Capturas de Pantalla
-
-<p align="center">
-  <img src="./docs/login.png" alt="Pantalla de Login" width="600" />
-</p>
-
-<p align="center">
-  <img src="./docs/dashboard.png" alt="Dashboard" width="600" />
-</p>
+Bienvenido al repositorio de nuestra aplicación para el control y agendamiento de pacientes. Esta herramienta moderna y eficiente está diseñada para facilitar la gestión integral de citas médicas, historias clínicas, facturas y pagos. Desarrollada con tecnologías de vanguardia como Next.js, Spring Boot y MySQL, y desplegada en AWS utilizando Docker y RDS de Amazon.
 
 ---
 
-## 🛠️ Instalación y Configuración
+## 🌟 Características Destacadas
 
-### Clonar el Repositorio
+- **Sistema de Login Seguro**: Autenticación robusta con Spring Boot y JWT.
+- **Dashboard Interactivo**: Visualización dinámica de datos con gráficos informativos.
+- **Agendamiento de Citas Intuitivo**: Gestión eficiente y flexible de citas médicas.
+- **Registro Completo de Historias Clínicas**: Detalles médicos organizados y accesibles.
+- **Gestión Financiera Eficaz**: Generación y seguimiento de facturas y pagos sin complicaciones.
 
-```bash
-git clone https://github.com/tu-usuario/nombre-del-repositorio.git
-cd nombre-del-repositorio
+---
+
+## 🖼️ Capturas de Pantalla
+
+### Pantalla de Login
+<p align="center">
+  <a href="http://8.219.185.139:3000>
+    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/login.PNG" alt="Control y Agendamiento de Pacientes">
+  </a>
+</p>
+
+### Dashboard con Gráficos
+<p align="center">
+  <a href="http://8.219.185.139:3000>
+    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/dashboard.PNG" alt="Dashboard con Gráficos">
+  </a>
+</p>>
+
+### Agenda
+<p align="center">
+  <a href="http://8.219.185.139:3000>
+    <img src="./React_app/public/img/agenda.PNG" alt="Agenda">
+  </a>
+</p>>
+
+### Historia clinica
+<p align="center">
+  <a href="http://8.219.185.139:3000>
+    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/paciente.PNG" alt="Historia clinica">
+  </a>
+</p>>
+
+### Tablas de información
+<p align="center">
+  <a href="http://8.219.185.139:3000>
+    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/informacion.PNG)" alt="Tablas de información">
+  </a>
+</p>>
