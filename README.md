@@ -1,5 +1,7 @@
 # Control y Agendamiento de Pacientes
 
+![Logo de la Aplicación](frontend/public/logo.png)
+
 ## Descripción
 
 Esta aplicación permite el control y agendamiento de pacientes, facilitando la gestión de citas, historias clínicas, facturas y pagos. Está desarrollada con Next.js para el frontend, Spring Boot para el backend y MySQL como base de datos. La aplicación está desplegada en AWS utilizando Docker y RDS de Amazon AWS. Además, incluye un sistema de autenticación basado en Spring Boot y JWT.
@@ -18,6 +20,12 @@ Esta aplicación permite el control y agendamiento de pacientes, facilitando la 
 - **Backend**: Spring Boot
 - **Base de Datos**: MySQL
 - **Despliegue**: Docker, AWS, RDS de Amazon AWS
+
+## Capturas de Pantalla
+
+![Dashboard de Pacientes](frontend/public/dashboard.png)
+
+![Detalle de Cita](frontend/public/cita.png)
 
 ## Requisitos
 
