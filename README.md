@@ -1,6 +1,6 @@
 # Control y Agendamiento de Pacientes
 
-![Logo de la Aplicación](frontend/public/logo.png)
+![Logo de la Aplicación](./docs/logo.png)
 
 ## Descripción
 
@@ -8,11 +8,11 @@ Esta aplicación permite el control y agendamiento de pacientes, facilitando la 
 
 ## Características
 
-- **Sistema de login**: Autenticación segura utilizando Spring Boot y JWT.
-- **Gráficas**: Visualización de datos relevantes a través de gráficas.
-- **Agendamiento de citas**: Sistema para ver y gestionar citas agendadas.
-- **Historias clínicas**: Gestión y almacenamiento de historias clínicas de los pacientes.
-- **Facturas y pagos**: Sección para la generación y manejo de facturas y pagos.
+- 🌐 **Sistema de login**: Autenticación segura utilizando Spring Boot y JWT.
+- 📊 **Gráficas**: Visualización de datos relevantes a través de gráficas.
+- 📅 **Agendamiento de citas**: Sistema para ver y gestionar citas agendadas.
+- 🏥 **Historias clínicas**: Gestión y almacenamiento de historias clínicas de los pacientes.
+- 💵 **Facturas y pagos**: Sección para la generación y manejo de facturas y pagos.
 
 ## Tecnologías Utilizadas
 
@@ -23,9 +23,11 @@ Esta aplicación permite el control y agendamiento de pacientes, facilitando la 
 
 ## Capturas de Pantalla
 
-![Dashboard de Pacientes](frontend/public/dashboard.png)
+![Login](./docs/login.png)
+*Pantalla de inicio de sesión.*
 
-![Detalle de Cita](frontend/public/cita.png)
+![Dashboard](./docs/dashboard.png)
+*Dashboard con gráficos y estadísticas.*
 
 ## Requisitos
 
