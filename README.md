@@ -1,54 +1,35 @@
-# Proyecto de Aplicación Médica
+# Control y Agendamiento de Pacientes
 
-Este repositorio contiene una aplicación médica desarrollada con Next.js, Spring Boot y MySQL. La aplicación permite la visualización de citas agendadas, la creación de facturas y presenta tres gráficos interactivos para el análisis de datos.
+## Descripción
 
-## Tabla de Contenidos
-
-1. [Características](#características)
-2. [Requisitos](#requisitos)
-3. [Instalación](#instalación)
-4. [Uso](#uso)
-5. [Despliegue con Docker](#despliegue-con-docker)
-6. [Credenciales de Inicio de Sesión](#credenciales-de-inicio-de-sesión)
-7. [Contribuciones](#contribuciones)
-8. [Licencia](#licencia)
+Esta aplicación permite el control y agendamiento de pacientes, facilitando la gestión de citas, historias clínicas, facturas y pagos. Está desarrollada con Next.js para el frontend, Spring Boot para el backend y MySQL como base de datos. La aplicación está desplegada en AWS utilizando Docker y RDS de Amazon AWS. Además, incluye un sistema de autenticación basado en Spring Boot y JWT.
 
 ## Características
 
-### Visualización de Citas
+- **Sistema de login**: Autenticación segura utilizando Spring Boot y JWT.
+- **Gráficas**: Visualización de datos relevantes a través de gráficas.
+- **Agendamiento de citas**: Sistema para ver y gestionar citas agendadas.
+- **Historias clínicas**: Gestión y almacenamiento de historias clínicas de los pacientes.
+- **Facturas y pagos**: Sección para la generación y manejo de facturas y pagos.
 
-![Visualización de Citas](ruta/a/imagen-citas.png)
+## Tecnologías Utilizadas
 
-Sección para ver las citas agendadas.
-
-### Facturación
-
-![Facturación](ruta/a/imagen-facturacion.png)
-
-Funcionalidad para agregar y gestionar facturas.
-
-### Gráficos Interactivos
-
-![Gráficos Interactivos](ruta/a/imagen-graficos.png)
-
-Tres gráficos para el análisis de datos.
-
-### Arquitectura
-
-![Arquitectura](ruta/a/imagen-arquitectura.png)
-
-Frontend con Next.js, Backend con Spring Boot y Base de datos MySQL.
+- **Frontend**: Next.js
+- **Backend**: Spring Boot
+- **Base de Datos**: MySQL
+- **Despliegue**: Docker, AWS, RDS de Amazon AWS
 
 ## Requisitos
 
-- Node.js
-- Java 11 o superior
-- MySQL
-- Docker (opcional para despliegue con contenedores)
+- **Docker**
+- **Docker Compose**
+- **Java 11**
+- **Node.js**
+- **MySQL**
 
-## Instalación
+## Instalación y Configuración
 
-### Clonar el Repositorio
+### Clonar el repositorio
 
 ```bash
 git clone https://github.com/tu-usuario/nombre-del-repositorio.git
