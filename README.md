@@ -26,7 +26,7 @@ Esta aplicación permite el control y agendamiento de pacientes, facilitando la 
 ![Login](./docs/login.png)
 *Pantalla de inicio de sesión.*
 
-![Dashboard](./docs/dashboard.png)
+![Dashboard](https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/dashboard.PNG)
 *Dashboard con gráficos y estadísticas.*
 
 ## Requisitos
