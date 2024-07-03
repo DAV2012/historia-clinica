@@ -9,13 +9,15 @@ import {
 
 import Dashboard from "../componentes/Dashboard";
 import { NotificationProvider } from "../contexts/NotificationContext";
+import BasicDrawer from "../componentes/Drawer";
+import { CircularProgress } from "@mui/material";
 
 export default function ViewDashboard() {
   return (
     <ThemeProvider theme={theme}>
       
-        <NotificationProvider>
-          <Dashboard />
+      <NotificationProvider>
+        <Dashboard />
         </NotificationProvider>
       
     </ThemeProvider>

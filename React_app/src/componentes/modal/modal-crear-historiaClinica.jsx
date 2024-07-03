@@ -11,6 +11,7 @@ import { useForm } from "../hooks/useForm";
 import { validationsForm, validationsFormSubmit } from "../../validacion";
 import FormPaciente from "../formularios/formPaciente";
 import { NotificationContext } from "../../contexts/FirebaseContext";
+import { colorAnalogo600, colorPrimary50 } from "../../globalStyle/variables";
 
 
 
@@ -79,7 +80,7 @@ export default function ModalCrearHistoriaClinica({
   return (
     <Dialog open={openModal} onClose={()=>setResponse("cancel")} maxWidth={modalSize}>
 
-      <DialogTitle>{objetoModal.titulo}</DialogTitle>
+      <DialogTitle sx={{backgroundColor:colorAnalogo600, marginBottom:"2rem"}} color={colorPrimary50}>{objetoModal.titulo}</DialogTitle>
       <DialogContent >
         <DialogContentText>{objetoModal.DialogContentText}</DialogContentText>
             <FormPaciente

@@ -20,6 +20,8 @@ import {
 
   colorPrimary50,
   colorPrimary500,
+  colorSecondary400,
+  colorSecondary50,
 } from "../../globalStyle/variables";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -82,14 +84,17 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function BasicDrawer() {
+export default function BasicDrawer({path}) {
 
   
   const navigate = useNavigate();
 
+ 
   const [open, setOpen] = useState(false);
 
+
   const handleDrawerOpen = () => {
+  
     setOpen(!open);
   };
 
@@ -113,9 +118,14 @@ export default function BasicDrawer() {
         <List>
           <ListItem
             disablePadding
-            sx={{ justifyContent: "center", flexGrow: 1 }}
+            sx={{ justifyContent: "center", 
+              flexGrow: 1, 
+              backgroundColor:"dashboard" === path && colorSecondary400, 
+            }}
+            id="dashboard"
+            
           >
-            <ListItemButton onClick={() => handleNavigate("/dashboard")}>
+            <ListItemButton onClick={() => handleNavigate("/dashboard")} >
               <ListItemIcon>
                 <PieChartIcon sx={{ color: colorPrimary50 }} />
               </ListItemIcon>
@@ -124,9 +134,13 @@ export default function BasicDrawer() {
           </ListItem>
           <ListItem
             disablePadding
-            sx={{ justifyContent: "center", flexGrow: 1 }}
+            sx={{ justifyContent: "center", 
+              flexGrow: 1,
+              backgroundColor:"agenda" === path && colorSecondary400, 
+            }}
+            id="agenda"
           >
-            <ListItemButton onClick={() => handleNavigate("/agenda")}>
+            <ListItemButton onClick={() => handleNavigate("/agenda")} >
               <ListItemIcon>
                 <ScheduleSendIcon sx={{ color: colorPrimary50 }} />
               </ListItemIcon>
@@ -135,9 +149,13 @@ export default function BasicDrawer() {
           </ListItem>
           <ListItem
             disablePadding
-            sx={{ justifyContent: "center", flexGrow: 1 }}
+            sx={{ justifyContent: "center", 
+              flexGrow: 1,
+              backgroundColor:"paciente" === path && colorSecondary400, 
+             }}
+            id="paciente"
           >
-            <ListItemButton onClick={() => handleNavigate("/paciente")}>
+            <ListItemButton onClick={() => handleNavigate("/paciente")} >
               <ListItemIcon sx={{ color: colorPrimary50 }}>
                 <FolderSharedIcon color="red" />
               </ListItemIcon>
@@ -146,9 +164,13 @@ export default function BasicDrawer() {
           </ListItem>
           <ListItem
             disablePadding
-            sx={{ justifyContent: "center", flexGrow: 1 }}
+            sx={{ justifyContent: "center", 
+              flexGrow: 1,
+              backgroundColor:"datos" === path && colorSecondary400, 
+             }}
+            id="datos"
           >
-            <ListItemButton onClick={() => handleNavigate("/datos")}>
+            <ListItemButton onClick={() => handleNavigate("/datos")} >
               <ListItemIcon sx={{ color: colorPrimary50 }}>
                 <FindInPageIcon />
               </ListItemIcon>

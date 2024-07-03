@@ -15,7 +15,7 @@ import {
 
 } from "../../globalStyle/variables";
 import "./styled.css";
-import { red } from "@mui/material/colors";
+
 
 
 export default function CheckBoxField({

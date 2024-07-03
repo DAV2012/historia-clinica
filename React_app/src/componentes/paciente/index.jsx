@@ -54,7 +54,7 @@ const objetoTablaFactura = {
   thirdChip: "",
   mostrarPaginacion: false,
   IconosEdicion: true,
-  iconPago: true,
+  iconPago: false,
 };
 
 const objetoCard = {
@@ -213,6 +213,7 @@ export default function Paciente() {
     setOpen(false);
     if (row === itemSelectIdPaciente) {
       setOpen(!open);
+      setItemSelectIdPaciente(null)
     } else {
       setItemSelectIdPaciente(row);
     }
@@ -248,7 +249,7 @@ export default function Paciente() {
         <CircularProgress color="inherit" />
       </Backdrop>
 
-      <BasicDrawer />
+      <BasicDrawer path="paciente" />
 
       <Box
         id="containerMain"
@@ -297,7 +298,7 @@ export default function Paciente() {
                 .map((dataHistoriaaclinica, index) => {
 
                   return (
-                    <Grid2 xs={12} md={!expanded && 4} key={index}>
+                    <Grid2 xs={12} md={!expanded && 4} key={index} height={"100%"}>
                       <Cards
 
                         listDataBD={dataHistoriaaclinica}
@@ -359,21 +360,11 @@ export default function Paciente() {
                 width={"100%"}
                 display="flex"
                 position="relative" // Agrega esta propiedad
+                id="Card Factura"
+                minHeight={"200px"}
 
               >
-                <IconButton
-                  sx={{
-                    padding: 0,
-                    position: "absolute",
-                    top: "0.5rem",
-                    right: "0.5rem",
-                  }}
-                  onClick={handleVistCardFactura}
-                >
-                  <Tooltip disableFocusListener title="Cerrar factura" arrow>
-                    <CancelIcon></CancelIcon>
-                  </Tooltip>
-                </IconButton>
+
 
                 {dataPagos && dataPagos.pago && <Box
                   sx={{
@@ -381,7 +372,21 @@ export default function Paciente() {
                     padding: isMobile ? "1rem" : "1rem 2rem",
                     width: "100%"
                   }}
+                  
                 >
+                  <IconButton
+                    sx={{
+                      padding: 0,
+                      position: "absolute",
+                      top: "0.5rem",
+                      right: "0.5rem",
+                    }}
+                    onClick={handleVistCardFactura}
+                  >
+
+                    <CancelIcon></CancelIcon>
+
+                  </IconButton>
                   <Box
                     sx={{
                       display: "flex",
@@ -392,7 +397,7 @@ export default function Paciente() {
 
                     }}
                   >
-                    <Typography variant="h2" padding={"1rem 0"} fontSize={"18px"}>
+                    <Typography variant="h2" fontSize={"18px"}>
                       {dataPagos.codigofactura || ""}  {<Typography>Seguimiento a esta factura</Typography>}
                     </Typography>
 
@@ -402,40 +407,36 @@ export default function Paciente() {
                       sx={{
                         justifyContent: "space-between"
                       }}
-
-
                     >
                       <IconButton
                         id={itemselectPagoPorFactura}
                         data-services="pagosFactura"
-                        sx={{
-                          padding: 0
-                        }}
-
-
                         onClick={handleopenModalPAgoFactura}
                       >
+                        
+                        <Tooltip>
                         <ReceiptIcon />
+                        </Tooltip>
                       </IconButton>
-                      <IconButton
-                        sx={{
-                          padding: 0
-                        }}
-
-                      >
+                      <IconButton>
                         {dataPagos && dataPaciente && dataPagos.pago && dataPaciente.historia_clinica.length > 0 && <PDFDownloadLink document={<MyFactura data={dataPagos} dataPersonal={dataPaciente.historia_clinica[0]} totalSum={totalSum} />} fileName="informe.pdf">
                           {({ blob, url, loading, error }) => (
 
 
-                            error && <Box>Something went wrong: {error}</Box>,
-                            !error && loading ? <Box fontSize={"0.5rem"}>Cargando ...</Box> : <a
-                              href={url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Tooltip disableFocusListener title="Imprimir factura" arrow>
-                                <PrintIcon ></PrintIcon>
-                              </Tooltip>
+                            error && <IconButton><Tooltip sx={{opacity:0.5}}  title={`error ${error}`} arrow>
+                            <LocalPrintshopIcon ></LocalPrintshopIcon>
+                          </Tooltip></IconButton>,
+                            !error && loading ? <IconButton fontSize={"0.5rem"}>
+                              <Tooltip sx={{opacity:0.5}}  title="Imprimir factura" arrow>
+                                <LocalPrintshopIcon ></LocalPrintshopIcon>
+                              </Tooltip></IconButton> : <a
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                              <IconButton  title="Imprimir factura" arrow>
+                                <LocalPrintshopIcon ></LocalPrintshopIcon>
+                              </IconButton>
                             </a>
 
                           )}
@@ -445,7 +446,8 @@ export default function Paciente() {
                   </Box>
 
 
-                  {dataPagos && dataPagos.pago && dataPagos.pago.map(({ codigo_pago_text, fechadate, observacionespago, valor_pago_double }, index) => {
+                  <Box>
+                    {dataPagos && dataPagos.pago && dataPagos.pago.map(({ codigo_pago_text, fechadate, observacionespago, valor_pago_double }, index) => {
                     return <Box key={index} display={"flex"} alignItems={"center"}>
                       <Typography variant="h2" fontSize={"8px"} paddingRight={"0.5rem"} width={"-webkit-fill-available"}>
                         {observacionespago}
@@ -491,6 +493,7 @@ export default function Paciente() {
                       </Typography>
                     </Box>
 
+                  </Box>
                   </Box>
                 </Box>}
 

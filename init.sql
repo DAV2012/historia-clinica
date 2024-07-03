@@ -17,6 +17,25 @@ USE `dbcivera`;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+SET GLOBAL innodb_buffer_pool_size = 128 * 1024 * 1024;
+SET GLOBAL innodb_log_file_size = 32 * 1024 * 1024;
+SET GLOBAL innodb_buffer_pool_size = 128 * 1024 * 1024;
+SET GLOBAL innodb_log_buffer_size = 8 * 1024 * 1024;
+SET GLOBAL key_buffer_size = 16 * 1024 * 1024;
+SET GLOBAL max_connections = 20;
+SET GLOBAL thread_cache_size = 10;
+SET GLOBAL tmp_table_size = 16 * 1024 * 1024;
+SET GLOBAL max_heap_table_size = 16 * 1024 * 1024;
+SET GLOBAL innodb_flush_log_at_trx_commit = 1;
+SET GLOBAL innodb_file_per_table = 1;
+SET GLOBAL max_allowed_packet = 16 * 1024 * 1024;
+SET GLOBAL sort_buffer_size = 512 * 1024;
+SET GLOBAL read_buffer_size = 512 * 1024;
+SET GLOBAL read_rnd_buffer_size = 1 * 1024 * 1024;
+SET GLOBAL join_buffer_size = 1 * 1024 * 1024;
+SET GLOBAL performance_schema = OFF
+
+
 --
 -- Table structure for table `agenda`
 --

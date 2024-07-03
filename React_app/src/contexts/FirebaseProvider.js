@@ -12,7 +12,7 @@ const DataProvider = ({ children }) => {
   const getAuth = async (form) => {
 
       try {
-        return await fetch("api/login", {
+        return await fetch("/api/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/agenda/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&id=${id}`;
+    const url =  `/api/agenda/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&id=${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -47,7 +47,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de creacion del paciente no proporcionada." });
     }
 
-    const url =  `api/paciente/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+    const url =  `/api/paciente/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -58,7 +58,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de creacion del paciente no proporcionada." });
     }
 
-    const url =  `api/factura/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&id=${id}`;
+    const url =  `/api/factura/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&id=${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -69,7 +69,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de creacion del paciente no proporcionada." });
     }
 
-    const url =  `api/pago/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&id=${id}`;
+    const url =  `/api/pago/fechas?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}&id=${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -82,7 +82,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/agenda/${id}`;
+    const url =  `/api/agenda/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -99,7 +99,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/paciente/${id}`;
+    const url =  `/api/paciente/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -115,7 +115,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/agenda/paciente/${id}`;
+    const url =  `/api/agenda/paciente/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -136,9 +136,9 @@ const DataProvider = ({ children }) => {
     let url;
   
     if (documento !== "") {
-      url =  `api/historia_clinica/documento/${documento}?page=${page}`;
+      url =  `/api/historia_clinica/documento/${documento}?page=${page}`;
     } else {
-      url =  `api/historia_clinica?page=${page}`;
+      url =  `/api/historia_clinica?page=${page}`;
     }
   
     return await apiGet(url)
@@ -153,7 +153,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/historia_clinica/id/${id}`;
+    const url =  `/api/historia_clinica/id/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -166,7 +166,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/historia_clinica/${id}`;
+    const url =  `/api/historia_clinica/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -180,7 +180,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/factura/${id}`;
+    const url =  `/api/factura/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -194,7 +194,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/factura/id/${id}`;
+    const url =  `/api/factura/id/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -207,7 +207,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/pago/factura/${id}`;
+    const url =  `/api/pago/factura/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -223,7 +223,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/pago/${id}`;
+    const url =  `/api/pago/${id}`;
 
     return await apiGet(url)
       .then(data => data)
@@ -240,10 +240,10 @@ const DataProvider = ({ children }) => {
     }
 
     if (document && documento !== "") {
-      url =  `api/pago/search/${documento}?page=${page}`
+      url =  `/api/pago/search/${documento}?page=${page}`
     }
     else {
-      url =  `api/pago?page=${page}`
+      url =  `/api/pago?page=${page}`
     }
 
     return await apiGet(url)
@@ -259,10 +259,10 @@ const DataProvider = ({ children }) => {
 
 
     if (document && documento !== "") {
-      url =  `api/factura/documento/${documento}?page=${page}`
+      url =  `/api/factura/documento/${documento}?page=${page}`
     }
     else {
-      url =  `api/factura?page=${page}`
+      url =  `/api/factura?page=${page}`
     }
 
     return await apiGet(url)
@@ -280,10 +280,10 @@ const DataProvider = ({ children }) => {
     }
 
     if (document && documento !== "") {
-      url =  `api/paciente/documento/${documento}?page=${page}`
+      url =  `/api/paciente/documento/${documento}?page=${page}`
     }
     else {
-      url =  `api/paciente?page=${page}`
+      url =  `/api/paciente?page=${page}`
     }
 
     
@@ -303,10 +303,10 @@ const DataProvider = ({ children }) => {
       }
 
       if (document && documento !== "") {
-        url =  `api/agenda/documento/${documento}?page=${page}`
+        url =  `/api/agenda/documento/${documento}?page=${page}`
       }
       else {
-        url =  `api/agenda?page=${page}`
+        url =  `/api/agenda?page=${page}`
       }
 
       return await apiGet(url)
@@ -364,7 +364,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/paciente`;
+    const url =  `/api/paciente`;
 
     return apiPost(url, form)
       .then(data => data)
@@ -377,7 +377,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/agenda`;
+    const url =  `/api/agenda`;
     
 
     return apiPost(url, form)
@@ -391,7 +391,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/historia_clinica`;
+    const url =  `/api/historia_clinica`;
 
     return apiPost(url, form)
     .then(data => data)
@@ -404,7 +404,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/factura`;
+    const url =  `/api/factura`;
 
     return apiPost(url, form)
     .then(data => data)
@@ -417,7 +417,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/pago`;
+    const url =  `/api/pago`;
 
     return apiPost(url, form)
     .then(data => data)
@@ -473,7 +473,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/paciente`;
+    const url =  `/api/paciente`;
 
     return apiPut(url, form)
     .then(data => data)
@@ -484,13 +484,12 @@ const DataProvider = ({ children }) => {
   
   const putAgenda = async (form) => {
 
-    console.log(form)
     
     if (!form) {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/agenda`;
+    const url =  `/api/agenda`;
 
     return apiPut(url, form)
     .then(data => data)
@@ -503,7 +502,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/factura`;
+    const url =  `/api/factura`;
 
     return apiPut(url, form)
     .then(data => data)
@@ -515,7 +514,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/historia_clinica`;
+    const url =  `/api/historia_clinica`;
 
     return apiPut(url, form)
     .then(data => data)
@@ -527,7 +526,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/pago`;
+    const url =  `/api/pago`;
 
     return apiPut(url, form)
     .then(data => data)
@@ -587,7 +586,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/agenda/${id}`;
+    const url =  `/api/agenda/${id}`;
 
     return apiDelete(url, id)
     .then(data => data)
@@ -606,7 +605,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/factura/${id}`;
+    const url =  `/api/factura/${id}`;
 
     return apiDelete(url, id)
     .then(data => data)
@@ -622,7 +621,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/pago/${id}`;
+    const url =  `/api/pago/${id}`;
 
     return apiDelete(url, id)
     .then(data => data)
@@ -635,7 +634,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/paciente/${id}`;
+    const url =  `/api/paciente/${id}`;
 
     return apiDelete(url, id)
     .then(data => data)
@@ -647,7 +646,7 @@ const DataProvider = ({ children }) => {
       return Promise.resolve({ error: "Fecha de cita no proporcionada." });
     }
 
-    const url =  `api/historia_clinica/${id}`;
+    const url =  `/api/historia_clinica/${id}`;
 
     return apiDelete(url, id)
     .then(data => data)

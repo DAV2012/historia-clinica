@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import "./styled.css";
+import "./";
 import {
   styled as muiStyled,
 } from "@mui/material";

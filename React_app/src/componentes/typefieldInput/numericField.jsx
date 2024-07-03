@@ -15,6 +15,7 @@ export const StyledTextField = muiStyled(TextField)`
       font-size: 12px;
       font-weight: 600;
       color:${colorSecondary400};
+      width: 100%;
     }
 `;
 

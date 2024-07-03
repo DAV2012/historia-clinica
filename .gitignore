@@ -1,3 +1,4 @@
 React_app/node_modules/
 node_modules
 key-pen-aws-historia-clinica.pem
+dev.docker-compose.yml

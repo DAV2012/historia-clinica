@@ -3,6 +3,7 @@ import Schedule from "../componentes/schedule";
 import { DataProvider } from "../contexts/FirebaseProvider";
 import theme from "../globalStyle/globalStyled-mui";
 import { NotificationProvider } from "../contexts/NotificationContext";
+import BasicDrawer from "../componentes/Drawer";
 
 
 export default function ViewAgenda() {

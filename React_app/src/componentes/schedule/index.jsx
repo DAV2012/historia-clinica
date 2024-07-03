@@ -5,6 +5,7 @@ import {
   SpeedDial,
   SpeedDialAction,
   useMediaQuery,
+  CircularProgress,
 } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import BasicRangeShortcuts from "../BasicDateCalendar";
@@ -78,6 +79,7 @@ export default function Schedule() {
     .then((respuesta) => {
       if (respuesta) {
         if (!respuesta.empty) {
+
           setDataAgenda(respuesta.content);
         } else {
           setDataAgenda(null);
@@ -88,7 +90,10 @@ export default function Schedule() {
             "info"
           );
         }
-        setOpenBackdrop(false);
+        sleep(500).then(() => {
+          setOpenBackdrop(false);
+
+        });
       } else {
         showNotification(`Ocurrio un error `, `¡ERROR!`, ``, "error");
       }
@@ -128,8 +133,14 @@ export default function Schedule() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <>
-      {/* <Box display={"flex"}  overflow={"hidden"}> */}
-        <BasicDrawer />
+
+      <Backdrop
+        open={openBackdrop}
+        sx={{ color: "#fff", backgroundColor: "rgba(0, 0, 0, 0.25)" }}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+        <BasicDrawer path="agenda"/>
         <Box  boxSizing={"border-box"}  gap={"2rem"} display={"flex"} flexDirection={"row-reverse"} flexWrap={isMobile ? "wrap":"nowrap"} flexGrow={1} justifyContent={"center"} marginLeft={"3rem"} paddingTop={"3rem"}>
         
           <BasicRangeShortcuts

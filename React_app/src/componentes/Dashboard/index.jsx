@@ -203,13 +203,13 @@ export default function Dashboard() {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <>
-      <BasicDrawer>
-        <CircularProgress color="inherit" />
-      </BasicDrawer>
+      <BasicDrawer path="dashboard"/>
       <Backdrop
         open={openBackdrop}
         sx={{ color: "#fff", backgroundColor: "rgba(0, 0, 0, 0.25)" }}
-      />
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Grid2 container spacing={{ xs: "1rem", md: "5rem" }} height={"100%"} boxSizing={"border-box"} margin={isMobile ? "0 0 0 3rem" : "3rem"}>
         <Grid2 xs={12} md={3} height={"auto"}>
           <LocalizationProvider dateAdapter={AdapterDayjs} >

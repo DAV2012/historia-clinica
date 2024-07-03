@@ -175,25 +175,25 @@ export default function ModalPagosFactura({
       setResponse("cancel");
       setActualizar(!actualizar);
     } else {
-      setItemSelec("");
+      setForm(servicesObjet.inicialpago);
       setTypeSubmit(null);
     }
 
   };
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
-    <Dialog open={openModal} onClose={handleClose} maxWidth={"sm"}>
+    <Dialog open={openModal} onClose={handleClose} maxWidth={"sm"} >
       <Backdrop
         open={openBackdrop}
         sx={{ color: "#fff", backgroundColor: "rgba(0, 0, 0, 0.25)" }}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <DialogTitle >
+      <DialogTitle sx={{ backgroundColor: colorAnalogo600 }}>
         <ListItem>
           <ListItemText
             primary={
-              <Typography variant="h2" fontSize={22}>
+              <Typography variant="h2" color={colorPrimary50} fontSize={22}>
                 Pagos
               </Typography>
             }
@@ -201,7 +201,7 @@ export default function ModalPagosFactura({
           <IconButton
             edge="end"
             aria-label="delete"
-            sx={{ marginRight: "2rem" }}
+            sx={{ marginRight: "2rem", color: colorPrimary50 }}
             onClick={handledCrearPago}
           >
             <ListAltOutlinedIcon />
@@ -209,7 +209,7 @@ export default function ModalPagosFactura({
         </ListItem>
       </DialogTitle>
       <Divider variant="middle" />
-      <DialogContent>
+      <DialogContent >
         <Box >
           <Grid2 container xs={12} spacing={2} margin={"0 0 2rem 0"} >
             {typeSubmit && (
@@ -230,7 +230,7 @@ export default function ModalPagosFactura({
                       index
                     ) => {
                       return (
-                        <Grid2 xs={6} key={index}>
+                        <Grid2 xs={12} md={6} key={index}>
                           <TypeFieldInput
                             name={value}
                             label={label}
@@ -253,7 +253,7 @@ export default function ModalPagosFactura({
             )}
             {!typeSubmit && (
               <>
-                <StyledGrid2 xs={6} sx={{ display: "flex", flexGrow: "1" }}>
+                <StyledGrid2 xs={12} md={6} sx={{ display: "flex", flexGrow: "1" }}>
                   <ListItemIcon>
                     <TagIcon />
                   </ListItemIcon>
@@ -270,7 +270,7 @@ export default function ModalPagosFactura({
                     }
                   />
                 </StyledGrid2>
-                <StyledGrid2 xs={6}>
+                <StyledGrid2 xs={12} md={6}>
                   <ListItemIcon>
                     <DateRangeIcon />
                   </ListItemIcon>
@@ -283,7 +283,7 @@ export default function ModalPagosFactura({
                   />
                 </StyledGrid2>
 
-                <StyledGrid2 xs={6} sx={{ display: "flex", flexGrow: "1" }}>
+                <StyledGrid2 xs={12} md={6} sx={{ display: "flex", flexGrow: "1" }}>
                   <ListItemIcon>
                     <AccountCircleIcon />
                   </ListItemIcon>
@@ -300,7 +300,7 @@ export default function ModalPagosFactura({
                     }
                   />
                 </StyledGrid2>
-                <StyledGrid2 xs={6}>
+                <StyledGrid2 xs={12} md={6}>
                   <ListItemIcon>
                     <PaidIcon />
                   </ListItemIcon>
@@ -319,7 +319,7 @@ export default function ModalPagosFactura({
                     }
                   />
                 </StyledGrid2>
-                <StyledGrid2 xs={6} sx={{ display: "flex", flexGrow: "1" }}>
+                <StyledGrid2 xs={12} md={6} sx={{ display: "flex", flexGrow: "1" }}>
                   <ListItemIcon>
                     <AssignmentIcon />
                   </ListItemIcon>
@@ -331,7 +331,7 @@ export default function ModalPagosFactura({
                     }
                   />
                 </StyledGrid2>
-                <StyledGrid2 xs={6}>
+                <StyledGrid2 xs={12} md={6}>
                   <ListItemIcon>
                     <InsertCommentOutlinedIcon />
                   </ListItemIcon>
@@ -339,6 +339,65 @@ export default function ModalPagosFactura({
                     primary={
                       <Typography variant="h2" noWrap>
                         {listDataBD.observaciones_text}
+                      </Typography>
+                    }
+                  />
+                </StyledGrid2>
+                <StyledGrid2 xs={12}>
+                  <ListItemText sx={{ display: "flex"}}
+                    primary={
+                      <Typography variant="h2" fontSize={"0.8rem"} width={"100px"} >Precio</Typography>
+                    }
+                    secondary={
+                      <Typography variant="h2" sx={{ fontSize: "0.8rem", color: colorPrimary500 }}>
+                        <NumericFormat
+                          displayType="text"
+                          customInput={Typography}
+                          thousandSeparator={true}
+                          prefix={"$"}
+                          decimalScale={2}
+                          value={listDataBD.total_factura}
+                        />
+                      </Typography>
+
+                    }
+                  />
+                </StyledGrid2 >
+                <StyledGrid2 xs={12} >
+                  <ListItemText sx={{ display: "flex"}}
+                    primary={
+                      <Typography variant="h2" fontSize={"0.8rem"} width={"100px"}>Abono</Typography>
+                    }
+                    secondary={
+                      <Typography variant="h2" sx={{ fontSize: "0.8rem", color: colorPrimary500 }}>
+                        <NumericFormat
+                          displayType="text"
+
+                          customInput={Typography}
+                          thousandSeparator={true}
+                          prefix={"$"}
+                          decimalScale={2}
+                          value={totalPago}
+                        />
+                      </Typography>
+                    }
+                  />
+                </StyledGrid2>
+                <StyledGrid2 xs={12} >
+                  <ListItemText sx={{ display: "flex", width:"100px" }}
+                    primary={
+                      <Typography variant="h2" fontSize={"0.8rem"} width={"100px"}>Deuda</Typography>
+                    }
+                    secondary={
+                      <Typography variant="h2" sx={{ fontSize: "0.8rem", color: "#e77779" }}>
+                        <NumericFormat
+                          displayType="text"
+                          customInput={Typography}
+                          thousandSeparator={true}
+                          prefix={"$"}
+                          decimalScale={2}
+                          value={listDataBD.total_factura - totalPago}
+                        />
                       </Typography>
                     }
                   />
@@ -355,73 +414,23 @@ export default function ModalPagosFactura({
             handleDelete={handleDelete}
             servicesEditar={servicesEditar}
             servicesDelete={servicesDelete}
+            backgroundColor={colorAnalogo600}
           />}
-          <Divider sx={{ margin: "2rem 0" }} />
+
         </Box>
       </DialogContent>
-      <DialogActions sx={{ alignItems: "flex-end", flexDirection: isMobile ? "colum" : "row"}}>
+      <DialogActions sx={{ alignItems: "flex-end", flexDirection: isMobile ? "colum" : "row" }}>
         <Box display={"flex"} flexGrow={1} flexDirection={"column"}>
-          <ListItemText sx={{ display: "flex", gap: "1.5rem", padding: "0.5rem" }}
-            primary={
-              <Typography variant="h2" fontSize={"0.8rem"} >Precio</Typography>
-            }
-            secondary={
-              <Typography variant="h2" sx={{ fontSize: "0.8rem", color: colorPrimary500 }}>
-                <NumericFormat
-                  displayType="text"
-                  customInput={Typography}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                  decimalScale={2}
-                  value={listDataBD.total_factura}
-                />
-              </Typography>
 
-            }
-          />
-          <ListItemText sx={{ display: "flex", gap: "1rem", padding: "0.5rem" }}
-            primary={
-              <Typography variant="h2" fontSize={"80%"} >Abono</Typography>
-            }
-            secondary={
-              <Typography variant="h2" sx={{ fontSize: "0.8rem", color: colorPrimary500 }}>
-                <NumericFormat
-                  displayType="text"
-
-                  customInput={Typography}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                  decimalScale={2}
-                  value={totalPago}
-                />
-              </Typography>
-            }
-          />
-          <ListItemText sx={{ display: "flex", gap: "1.5rem", padding: "0.5rem" }}
-            primary={
-              <Typography variant="h2" fontSize={"100%"}>Deuda</Typography>
-            }
-            secondary={
-              <Typography variant="h2" sx={{ fontSize: "1rem", color: "#e77779" }}>
-                <NumericFormat
-                  displayType="text"
-                  customInput={Typography}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                  decimalScale={2}
-                  value={listDataBD.total_factura - totalPago}
-                />
-              </Typography>
-            }
-          />
         </Box>
+
         {!typeSubmit && (
           <Button onClick={handleClose} name="cerrar">
             Cerrar
           </Button>
         )}
         {typeSubmit && (
-          <>
+          <Box display={"flex"} justifyContent="space-between" width={"100%"}>
             <Button onClick={handleClose}>Cancel</Button>
             <Button
               onClick={handleSubmit}
@@ -430,9 +439,9 @@ export default function ModalPagosFactura({
               id={listDataBD.id}
               data-codigofactura={listDataBD.codigofactura}
             >
-              Guardr pago
+              Guardar pago
             </Button>
-          </>
+          </Box>
         )}
       </DialogActions>
     </Dialog>

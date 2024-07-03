@@ -67,7 +67,7 @@ export default function Cards({
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
   return (
     <Card
-      sx={{width:"100%"}}
+      sx={{width:"100%", height:"100%", display:"flex", flexDirection:"column", justifyContent:"space-between"}}
     >
       <CardHeader
         avatar={
@@ -92,6 +92,37 @@ export default function Cards({
               </Typography>
             }
           ></ListItemText>
+        }
+
+        action={
+          <IconButton
+          id={listDataBD.id}
+          data-name={listDataBD[objetoCard.title]}
+          key={listDataBD.id}
+        >
+          <PDFDownloadLink document={<MyDocument data={dataPDF.historia_clinica[0]} />} fileName="informe.pdf">
+            {({ blob, url, loading, error }) => (
+
+              error && <Box><Tooltip sx={{opacity:0.5}}  title={`error ${error}`} arrow>
+              <LocalPrintshopIcon ></LocalPrintshopIcon>
+            </Tooltip></Box>,
+              !error && loading ? <Box fontSize={"0.5rem"}>
+                <Tooltip sx={{opacity:0.5}} title="Imprimir historia clínica" arrow>
+                  <LocalPrintshopIcon ></LocalPrintshopIcon>
+                </Tooltip>
+              </Box> : <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Tooltip title="Imprimir historia clínica" arrow>
+                  <LocalPrintshopIcon ></LocalPrintshopIcon>
+                </Tooltip>
+              </a>
+
+            )}
+          </PDFDownloadLink>
+        </IconButton>
         }
       >
 
@@ -159,65 +190,6 @@ export default function Cards({
               </Grid2>
             );
           })}
-        </Grid2>
-        <Grid2 container xs={12}>
-          <Grid2 xs textAlign={"center"}>
-
-            <IconButton
-              id={listDataBD.id}
-              data-name={listDataBD[objetoCard.title]}
-              key={listDataBD.id}
-            >
-              <PDFDownloadLink document={<MyDocument data={dataPDF.historia_clinica[0]} />} fileName="informe.pdf">
-                {({ blob, url, loading, error }) => (
-
-                  error && <Box>Something went wrong: {error}</Box>,
-                  !error && loading ? <Box fontSize={"0.5rem"}>Cargando ...</Box> : <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Tooltip disableFocusListener title="Imprimir historia clínica" arrow>
-                      <LocalPrintshopIcon ></LocalPrintshopIcon>
-                    </Tooltip>
-                  </a>
-
-                )}
-              </PDFDownloadLink>
-            </IconButton>
-          </Grid2>
-          <Grid2 xs textAlign={"center"}>
-            <IconButton
-              onClick={handleCrear}
-              data-services="crearHistoriaClinica"
-              data-name={listDataBD[objetoCard.title]}>
-              <Tooltip disableFocusListener title="Crear historia clinica" arrow>
-                <NoteAddIcon/>
-              </Tooltip>
-            </IconButton>
-          </Grid2>
-          <Grid2 xs textAlign={"center"}>
-            <IconButton
-              onClick={handleCrear}
-              data-services="crearFactura"
-              data-name={listDataBD[objetoCard.title]}>
-              <Tooltip disableFocusListener title="Crear Factura" arrow>
-
-                <AddCardOutlinedIcon />
-              </Tooltip>
-            </IconButton>
-          </Grid2>
-          <Grid2 xs textAlign={"center"}>
-            <IconButton
-              onClick={handleCrear}
-              data-services="crearAgenda"
-              data-name={listDataBD[objetoCard.title]}
-            >
-              <Tooltip disableFocusListener title="Crear agenda" arrow>
-                <EventIcon />
-              </Tooltip>
-            </IconButton>
-          </Grid2>
         </Grid2>
       </CardContent>
       <CardActions disableSpacing>

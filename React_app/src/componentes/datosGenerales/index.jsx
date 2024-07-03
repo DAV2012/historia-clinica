@@ -262,7 +262,7 @@ export default function VerticalTabs() {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Box display={"flex"} width={"100%"}>
-        <BasicDrawer />
+        <BasicDrawer path="datos"/>
         <Box padding={"2rem"} boxSizing={"border-box"} gap={"2rem"} display={"flex"} flexWrap={isMobile ? "wrap":"nowrap"} flexGrow={1} overflow={"hidden"}>
         <Tabs
           orientation={isMobile ? "horizontal" : "vertical"}

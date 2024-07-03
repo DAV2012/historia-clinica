@@ -10,6 +10,7 @@ import { validationsForm, validationsFormSubmit } from "../../validacion";
 import TypeFieldInput from "../typefieldInput";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { NotificationContext } from "../../contexts/FirebaseContext";
+import { colorAnalogo600, colorPrimary50 } from "../../globalStyle/variables";
 
 export default function ModalServices({
   openModal,
@@ -71,8 +72,8 @@ export default function ModalServices({
   
   return (
     
-    <Dialog open={openModal} onClose={()=>setResponse("cancel")} fullWidth={true}>
-      <DialogTitle>{objetoModal.titulo}</DialogTitle>
+    <Dialog open={openModal} onClose={()=>setResponse("cancel")} fullWidth={true} >
+      <DialogTitle sx={{backgroundColor:colorAnalogo600, marginBottom:"2rem"}} color={colorPrimary50}>{objetoModal.titulo}</DialogTitle>
       <DialogContent>
         <DialogContentText>{objetoModal.DialogContentText}</DialogContentText>
         <form action="" method="post">

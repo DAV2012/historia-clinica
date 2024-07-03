@@ -39,7 +39,8 @@ export default function BasicTable({
   handleDelete,
   handlePagos,
   servicesEditar,
-  servicesDelete
+  servicesDelete,
+  backgroundColor
 }) {
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -79,6 +80,7 @@ export default function BasicTable({
               flexWrap= "wrap"
               sx={{backgroundColor:selectedRow === index && colorPrimary50}}
               borderBottom={`1px solid ${colorPrimary50}`}
+              
             >
               <Box
                 display={"flex"}

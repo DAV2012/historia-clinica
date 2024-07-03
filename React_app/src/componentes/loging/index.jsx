@@ -54,8 +54,6 @@ export default function Loging() {
           
           getAuth(userData)
           .then(data => {
-            console.log(data)
-
               // Aquí puedes trabajar con los datos de la respuesta
               setIsAuthenticated(true);
               sessionStorage.setItem('jwtToken', data.jwTtoken);
@@ -64,7 +62,6 @@ export default function Loging() {
             sleep(1500).then(() => {
               setOpenBackdrop(false);
               navigate("/datos")
-              console.log(navigate("/datos"))
             });
           })
           .catch(error => {

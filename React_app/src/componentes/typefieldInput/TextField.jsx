@@ -5,20 +5,23 @@ import { TextField as MuiTextField, styled as muiStyled } from "@mui/material";
 import { colorSecondary400 } from "../../globalStyle/variables";
 
 import "dayjs/locale/es";
+
 import "./styled.css"
 
 
 
 export const StyledTextField = muiStyled(MuiTextField)`
-    .MuiFormLabel-root{
+  width:100%;
+  .MuiFormLabel-root{
       font-size: 15px;
-    }
-    .MuiInputBase-root{
+  },
+  .MuiInputBase-root{
       margin: 10;
       font-size: 12px;
       font-weight: 600;
       color:${colorSecondary400};
-    }
+      color: brown;
+  }  
 `;
 
 export default function TextField({disabled,label,type,value,onChange,name,handleBlur, handleSubmit,error,multiline}){

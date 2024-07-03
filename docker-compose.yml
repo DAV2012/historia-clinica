@@ -15,39 +15,44 @@ services:
   #   networks:
   #     - app_network
   #     - default
-  java_db:
-    container_name: java_db
-    image: mysql:8-oracle
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=1413
-      - MYSQL_DATABASE=dbcivera
-    volumes:
-      - mysql-data:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: '0.6'  # Limita el contenedor a usar un 50% de un CPU
-    networks:
-      app_network:
+  # java_db:
+  #   container_name: java_db
+  #   image: mysql:8-oracle
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=1413
+  #     - MYSQL_DATABASE=dbcivera
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #     - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  #   restart: always
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         cpus: '0.25'  # Limita el contenedor a usar un 50% de un CPU
+  #   networks:
+  #     app_network:
 
   java_app:
-    # container_name: java_app
+    container_name: java_app
     image: dav046/java_app:1.0.0
     # build: ./
     ports:
       - "8080:8080"
     environment:
-      - DATABASE_URL=jdbc:mysql://java_db:3306/dbcivera
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=1413
-      - API_SECRET=root
-    depends_on:
-      - java_db
+      # - DATABASE_URL=jdbc:mysql://java_db:3306/dbcivera
+      - DATABASE_URL=jdbc:mysql://urlMyBaseData:3306/nameBaseData
+      - DATABASE_USERNAME=Usuario
+      - DATABASE_PASSWORD=clave
+      - API_SECRET=SecretApi
+    # depends_on:
+    #   - java_db
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'  # Limita el contenedor a usar un 50% de un CPU
     networks:
       app_network:
 
@@ -60,9 +65,13 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - java_db
+      # - java_db
       - java_app
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'  # Limita el contenedor a usar un 50% de un CPU
     networks:
       - app_network
 
@@ -108,8 +117,8 @@ services:
   #     - app_network
 
     
-volumes:
-  mysql-data:
+# volumes:
+#   mysql-data:
 
     
 networks:
