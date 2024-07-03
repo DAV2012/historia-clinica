@@ -9,15 +9,35 @@ Este repositorio contiene una aplicación médica desarrollada con Next.js, Spri
 3. [Instalación](#instalación)
 4. [Uso](#uso)
 5. [Despliegue con Docker](#despliegue-con-docker)
-6. [Contribuciones](#contribuciones)
-7. [Licencia](#licencia)
+6. [Credenciales de Inicio de Sesión](#credenciales-de-inicio-de-sesión)
+7. [Contribuciones](#contribuciones)
+8. [Licencia](#licencia)
 
 ## Características
 
-- **Visualización de Citas:** Sección para ver las citas agendadas.
-- **Facturación:** Funcionalidad para agregar y gestionar facturas.
-- **Gráficos Interactivos:** Tres gráficos para el análisis de datos.
-- **Arquitectura:** Frontend con Next.js, Backend con Spring Boot y Base de datos MySQL.
+### Visualización de Citas
+
+![Visualización de Citas](ruta/a/imagen-citas.png)
+
+Sección para ver las citas agendadas.
+
+### Facturación
+
+![Facturación](ruta/a/imagen-facturacion.png)
+
+Funcionalidad para agregar y gestionar facturas.
+
+### Gráficos Interactivos
+
+![Gráficos Interactivos](ruta/a/imagen-graficos.png)
+
+Tres gráficos para el análisis de datos.
+
+### Arquitectura
+
+![Arquitectura](ruta/a/imagen-arquitectura.png)
+
+Frontend con Next.js, Backend con Spring Boot y Base de datos MySQL.
 
 ## Requisitos
 
