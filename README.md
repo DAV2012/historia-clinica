@@ -37,35 +37,25 @@ Bienvenido al repositorio de nuestra aplicación para el control y agendamiento 
 
 ### Pantalla de Login
 <p align="center">
-  <a href="http://8.219.185.139:3000>
-    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/login.PNG" alt="Control y Agendamiento de Pacientes">
-  </a>
+  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/login.PNG" alt="Control y Agendamiento de Pacientes">
 </p>
 
 ### Dashboard con Gráficos
-<p align="center">
-  <a href="http://8.219.185.139:3000>
-    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/dashboard.PNG" alt="Dashboard con Gráficos">
-  </a>
-</p>>
+<p align="center">  
+  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/dashboard.PNG" alt="Dashboard con Gráficos">
+</p>
 
 ### Agenda
 <p align="center">
-  <a href="http://8.219.185.139:3000>
-    <img src="./React_app/public/img/agenda.PNG" alt="Agenda">
-  </a>
-</p>>
+  <img src="./React_app/public/img/agenda.PNG" alt="Agenda">
+</p>
 
 ### Historia clinica
 <p align="center">
-  <a href="http://8.219.185.139:3000>
-    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/paciente.PNG" alt="Historia clinica">
-  </a>
-</p>>
+  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/paciente.PNG" alt="Historia clinica">
+</p>
 
 ### Tablas de información
 <p align="center">
-  <a href="http://8.219.185.139:3000>
-    <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/informacion.PNG)" alt="Tablas de información">
-  </a>
-</p>>
+  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/informacion.PNG" alt="Tablas de información">
+</p>
