@@ -70,3 +70,10 @@ Bienvenido al repositorio de nuestra aplicación para el control y agendamiento 
   </a>
 </p>
 
+### 📧 Contacto
+
+
+- **Nombre:** Duver Andres Vera Naranjo
+- **LinkedIn:** [Perfil de LinkedIn](www.linkedin.com/in/duver-andres-vera-naranjo-ing)
+
+¡Gracias por usar nuestra aplicación!
