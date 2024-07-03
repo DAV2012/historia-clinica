@@ -10,7 +10,7 @@
       <img src="https://img.shields.io/badge/Deployment-Docker%20%7C%20AWS-yellow" alt="Despliegue: Docker | AWS">
     </p>
     <p>
-      <a href="https://docusaurus.io">
+      <a href="http://8.219.185.139:3000/datos">
         <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/hero.png" alt="Control y Agendamiento de Pacientes">
       </a>
     </p>
@@ -36,26 +36,37 @@ Bienvenido al repositorio de nuestra aplicación para el control y agendamiento 
 ## 🖼️ Capturas de Pantalla
 
 ### Pantalla de Login
-<p align="center">
-  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/login.PNG" alt="Control y Agendamiento de Pacientes">
+<p>
+  <a href="http://8.219.185.139:3000/datos">
+    <img src="./React_app/public/img/login.PNG" alt="Control y Agendamiento de Pacientes">
+  </a>
 </p>
 
 ### Dashboard con Gráficos
-<p align="center">  
-  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/dashboard.PNG" alt="Dashboard con Gráficos">
+<p>
+  <a href="http://8.219.185.139:3000/datos">
+    <img src="./React_app/public/img/dashboard.PNG" alt="Dashboard con Gráficos">
+  </a>
 </p>
 
 ### Agenda
-<p align="center">
-  <img src="./React_app/public/img/agenda.PNG" alt="Agenda">
+<p>
+  <a href="http://8.219.185.139:3000/datos">
+    <img src="./React_app/public/img/agenda.PNG" alt="Agenda">
+  </a>
 </p>
 
 ### Historia clinica
-<p align="center">
-  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/paciente.PNG" alt="Historia clinica">
+<p>
+  <a href="http://8.219.185.139:3000/datos">
+    <img src="./React_app/public/img/paciente.PNG" alt="Historia clinica">
+  </a>
 </p>
 
 ### Tablas de información
-<p align="center">
-  <img src="https://raw.githubusercontent.com/DAV2012/historia-clinica/main/React_app/public/img/informacion.PNG" alt="Tablas de información">
+<p>
+  <a href="http://8.219.185.139:3000/datos">
+      <img src="./React_app/public/img/informacion.PNG" alt="Tablas de información">
+  </a>
 </p>
+
